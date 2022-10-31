@@ -1,0 +1,1 @@
+export const URL_API = 'https://pizza-server-back.herokuapp.com'
