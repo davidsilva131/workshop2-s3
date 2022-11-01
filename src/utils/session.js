@@ -3,7 +3,6 @@ export const redirectUser = (navigate) => {
     if (userSession) {
         navigate('/home')
     }
-
 }
 
 export const protectedRoute = (navigate, setUser) => {

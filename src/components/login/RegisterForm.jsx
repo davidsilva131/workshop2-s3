@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Button from '@mui/material/Button';
 import { registerUser } from "../../services/postUser";
 import Swal from 'sweetalert2';
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
+import { redirectUser } from "../../utils/session";
 
 
 function RegisterForm() {
@@ -38,6 +39,11 @@ function RegisterForm() {
     //         placeholder: 'URL Imagen'
     //     }
     // ]
+
+    useEffect(() => {
+        redirectUser(navigate)
+    }, []);
+
 
     const onRegister = async (data) => {
         const response = await registerUser(data);
