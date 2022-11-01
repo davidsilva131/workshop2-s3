@@ -1,10 +1,11 @@
 import { Logout } from "@mui/icons-material";
 import { Avatar, Box, IconButton, ListItemIcon, Menu, MenuItem, Tooltip } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Outlet } from "react-router";
 import { UserContext } from "../../routes/Router";
 import { useNavigate } from "react-router-dom";
 import './LayoutHome.scss'
+import { protectedRoute } from "../../utils/session";
 
 function LayoutHome() {
     const navigate = useNavigate()
@@ -26,8 +27,14 @@ function LayoutHome() {
             img: '',
             name: ''
         })
+        sessionStorage.clear()
         navigate('/')
     }
+
+    useEffect(() => {
+        protectedRoute(navigate, setUser)
+    }, []);
+
 
     return (
         <>

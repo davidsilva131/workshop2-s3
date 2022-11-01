@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../routes/Router";
 import UserIcon from '@mui/icons-material/Person2Outlined';
 import PasswordIcon from '@mui/icons-material/LockOutlined';
@@ -9,18 +9,26 @@ import { getUser } from "../../services/getApiInfo";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import './Form.scss'
+import { redirectUser } from "../../utils/session";
 
 function Form() {
     const { setUser } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
+
+    useEffect(() => {
+        redirectUser(navigate)
+    }, []);
+
+
     const login = async (data) => {
         const [response] = await Promise.all([getUser(data)]);
         console.log(response[0]);
         if (response.length) {
             setUser(response[0])
-            navigate('/home')
+            sessionStorage.setItem('user', JSON.stringify(response[0]))
+            navigate('home')
         } else {
             Swal.fire({
                 icon: 'error',
