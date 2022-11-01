@@ -6,7 +6,7 @@ function Home() {
     const { user } = useContext(UserContext);
 
     return (
-        <h1>{user.name}</h1>
+        <div>Pagina Home</div>
     )
 }
 

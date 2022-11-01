@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LayoutHome from "../components/home/LayoutHome";
 import Layout from "../components/login/Layout";
 import Home from "../components/pages/Home";
 import Login from "../components/pages/Login";
@@ -26,7 +27,9 @@ const Router = () => {
                         <Route path="/" element={<Login />} />
                         <Route path="register" element={<Register />} />
                     </Route>
-                    <Route path="home" element={<Home />} />
+                    <Route element={<LayoutHome />}>
+                        <Route path="home" element={<Home />} />
+                    </Route>
                 </Routes>
             </UserContext.Provider>
 
