@@ -1,8 +1,9 @@
 import React, { createContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
+import Layout from "../components/login/Layout";
+import Home from "../components/pages/Home";
+import Login from "../components/pages/Login";
+import Register from "../components/pages/Register";
 
 export const UserContext = createContext()
 
@@ -10,7 +11,8 @@ const Router = () => {
     const [user, setUser] = useState({
         user: '',
         password: '',
-        img: ''
+        img: '',
+        name: ''
     });
 
     return (
@@ -20,14 +22,15 @@ const Router = () => {
                 setUser,
             }}>
                 <Routes>
-                    <Route path="/" element={<Login />} />
+                    <Route element={<Layout />}>
+                        <Route path="/" element={<Login />} />
+                        <Route path="register" element={<Register />} />
+                    </Route>
                     <Route path="home" element={<Home />} />
                 </Routes>
             </UserContext.Provider>
 
-            <Routes>
-                <Route path="register" element={<Register />} />
-            </Routes>
+
         </BrowserRouter>
     )
 }
