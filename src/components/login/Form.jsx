@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../routes/Router";
 import UserIcon from '@mui/icons-material/Person2Outlined';
 import PasswordIcon from '@mui/icons-material/LockOutlined';
@@ -15,7 +15,6 @@ function Form() {
     const { setUser } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
-
 
     useEffect(() => {
         redirectUser(navigate)
@@ -51,7 +50,7 @@ function Form() {
                     <input placeholder="Contraseña" type="password" {...register("password", { required: true })} />
                     {errors.password && <span>El password es obligatorio</span>}
                 </div>
-                <Button type="submit" variant="contained" sx={{ backgroundColor: 'white', color: 'black', fontWeight: '800' }}>Ingresar</Button>
+                <Button type="submit" variant="contained" sx={{ backgroundColor: 'white', color: 'black', fontWeight: '800', ":hover": { backgroundColor: '#FE144C' } }}>Ingresar</Button>
             </form>
         </>
     )

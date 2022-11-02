@@ -17,6 +17,7 @@ const Router = () => {
     });
 
     return (
+
         <BrowserRouter>
             <UserContext.Provider value={{
                 user,
@@ -32,9 +33,8 @@ const Router = () => {
                     </Route>
                 </Routes>
             </UserContext.Provider>
-
-
         </BrowserRouter>
+
     )
 }
 export default Router;
