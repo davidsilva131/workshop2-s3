@@ -25,13 +25,3 @@
         }
     }
 }
-
-.button{
-    color: black;
-    font-family: $fontFamily;
-    font-weight: 800;
-    background-color:white ;
-    &:hover{
-        background-color: #FE144C;
-    }
-}
