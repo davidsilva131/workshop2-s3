@@ -72,9 +72,11 @@ function Search() {
         {
           !showProduct ?
             (
-              <div className="logo">
-                <img src="https://imgs.search.brave.com/hEGGV0ikghdlBgLt7hxj1Tt9CDIkZDrN07uI7_-sBG8/rs:fit:856:980:1/g:ce/aHR0cHM6Ly9jZG4u/b25saW5ld2ViZm9u/dHMuY29tL3N2Zy9p/bWdfNDI2MDAxLnBu/Zw" alt="pizza logo" />
-                <h3>Busca la pizza que más te gusta</h3>
+              <div className="search__container">
+                <div className="logo">
+                  <img src="https://imgs.search.brave.com/hEGGV0ikghdlBgLt7hxj1Tt9CDIkZDrN07uI7_-sBG8/rs:fit:856:980:1/g:ce/aHR0cHM6Ly9jZG4u/b25saW5ld2ViZm9u/dHMuY29tL3N2Zy9p/bWdfNDI2MDAxLnBu/Zw" alt="pizza logo" />
+                  <h3>Busca la pizza que más te gusta</h3>
+                </div>
               </div>
             ) :
             (

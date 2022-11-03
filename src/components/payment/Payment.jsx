@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import "../payment/payment.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+
 import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
@@ -13,13 +14,13 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
-  
- 
+
+
 
   const onSubmit = (data) => {
     console.log(data);
     navigate("/procesado");
-    
+
   };
 
   const ValidateTarjeta = (value) => {
@@ -31,18 +32,18 @@ const Payment = () => {
       return true;
     }
   };
- 
- const ValidateFecha = (value) => {
+
+  const ValidateFecha = (value) => {
     if (value.length < 4) {
       return "El numero debe contener exactamente 4 caracteres";
-    }  else {
+    } else {
       return true;
     }
   };
   const ValidateCvv = (value) => {
     if (value.length < 3) {
       return "El numero debe contener exactamente 3 caracteres";
-    }  else {
+    } else {
       return true;
     }
   };
@@ -73,7 +74,7 @@ const Payment = () => {
               className="form-control my-2"
               type="number"
               placeholder="Numero de tarjeta"
-          {...register("tarjeta", { required: true, validate: ValidateTarjeta })}
+              {...register("tarjeta", { required: true, validate: ValidateTarjeta })}
             />
             {errors.tarjeta && <span>El numero ingresado no pertenece a ninguna tarjeta</span>}
           </label>
@@ -86,7 +87,7 @@ const Payment = () => {
                   className="form-control my-2"
                   type="number"
                   placeholder="Fecha de vencimiento"
-          {...register("fecha", { required: true, validate: ValidateFecha })}
+                  {...register("fecha", { required: true, validate: ValidateFecha })}
 
                 />
                 {errors.fecha && <span>la fecha ingresada es invalida</span>}
