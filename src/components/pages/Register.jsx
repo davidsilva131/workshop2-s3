@@ -7,9 +7,11 @@ import './Login.scss'
 function Register() {
     return (
         <>
-            <div className="login">
-                <Logo />
-                <RegisterForm />
+            <div className="wrapper">
+                <div className="login">
+                    <Logo />
+                    <RegisterForm />
+                </div>
             </div>
         </>
     )

@@ -41,17 +41,4 @@
             outline: none;
         }
     }
-
-    .logUp {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        height: 10%;
-        justify-content: flex-end;
-        &__register{
-            color: white;
-            text-decoration: none;
-        }
-    }
 }

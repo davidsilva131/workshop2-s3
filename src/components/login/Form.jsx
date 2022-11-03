@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../routes/Router";
 import UserIcon from '@mui/icons-material/Person2Outlined';
 import PasswordIcon from '@mui/icons-material/LockOutlined';
@@ -9,18 +9,25 @@ import { getUser } from "../../services/getApiInfo";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import './Form.scss'
+import { redirectUser } from "../../utils/session";
 
 function Form() {
     const { setUser } = useContext(UserContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
+    useEffect(() => {
+        redirectUser(navigate)
+    }, []);
+
+
     const login = async (data) => {
         const [response] = await Promise.all([getUser(data)]);
         console.log(response[0]);
         if (response.length) {
             setUser(response[0])
-            navigate('/home')
+            sessionStorage.setItem('user', JSON.stringify(response[0]))
+            navigate('home')
         } else {
             Swal.fire({
                 icon: 'error',
@@ -47,7 +54,7 @@ function Form() {
                     <input placeholder="Contraseña" type="password" {...register("password", { required: true })} />
                     {errors.password && <span>El password es obligatorio</span>}
                 </div>
-                <Button type="submit" variant="contained" sx={{ backgroundColor: 'white', color: 'black', fontWeight: '800' }}>Ingresar</Button>
+                <Button type="submit" variant="contained" sx={{ backgroundColor: 'white', color: 'black', fontWeight: '800', ":hover": { backgroundColor: '#FE144C' } }}>Ingresar</Button>
                 <h3>Restablecer contraseña</h3>
                 <div className="logUp">
                     <h4>¿No tienes una cuenta?</h4>
