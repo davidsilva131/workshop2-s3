@@ -8,25 +8,21 @@ import { useNavigate } from "react-router-dom";
 import { ShopContext } from "../../routes/Router";
 
 const Payment = () => {
-  const navigate = useNavigate()
-  const { shop } = useContext(ShopContext)
+  const navigate = useNavigate();
+  const { shop } = useContext(ShopContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-
   useEffect(() => {
     console.log(shop);
-
   }, []);
-
 
   const onSubmit = (data) => {
     console.log(data);
     navigate("/procesado");
-
   };
 
   const ValidateTarjeta = (value) => {
@@ -53,22 +49,30 @@ const Payment = () => {
       return true;
     }
   };
-
-
-
+  const total =Math.round((shop.price )*(shop.quantity)) ;
+  console.log(total)
   return (
     <>
       <div className="contenedor__todo">
-        <form onSubmit={handleSubmit(onSubmit)} className="containerformulario" >
+        <form onSubmit={handleSubmit(onSubmit)} className="containerformulario">
           <h2>Carrito de compras</h2>
-          <div className="card__compra"></div>
-          <h2>Informacion de compra</h2>
+          <div className="card__compra">
+            <img src={shop.image} alt="" className="imagen__shop" />
+            <div className="contenedor__shop">
+              <div className="name__shop">{shop.name}</div>
+              <div className="cantidad__shop">x{shop.quantity}</div>
+            </div>
+            <div>
+              <div className="price__shop">${total}</div>
+            </div>
+          </div>
+          <h2>Informacion de pago</h2>
           <label>
             Nombre completo
             <input
               className="form-control my-2"
               type="text"
-              placeholder="Nombre completo"
+              placeholder="Ingresa tu nombre"
               {...register("name", { required: true })}
             />
             {errors.name && <span>falta el nombre</span>}
@@ -79,10 +83,15 @@ const Payment = () => {
             <input
               className="form-control my-2"
               type="number"
-              placeholder="Numero de tarjeta"
-              {...register("tarjeta", { required: true, validate: ValidateTarjeta })}
+              placeholder="1234 1234 1234 1234"
+              {...register("tarjeta", {
+                required: true,
+                validate: ValidateTarjeta,
+              })}
             />
-            {errors.tarjeta && <span>El numero ingresado no pertenece a ninguna tarjeta</span>}
+            {errors.tarjeta && (
+              <span>El numero ingresado no pertenece a ninguna tarjeta</span>
+            )}
           </label>
 
           <div className="contenedor__fecha">
@@ -92,9 +101,11 @@ const Payment = () => {
                 <input
                   className="form-control my-2"
                   type="number"
-                  placeholder="Fecha de vencimiento"
-                  {...register("fecha", { required: true, validate: ValidateFecha })}
-
+                  placeholder="MMYY"
+                  {...register("fecha", {
+                    required: true,
+                    validate: ValidateFecha,
+                  })}
                 />
                 {errors.fecha && <span>la fecha ingresada es invalida</span>}
               </label>
@@ -104,9 +115,12 @@ const Payment = () => {
                 CVV
                 <input
                   className="form-control my-2"
-                  type="number"
+                  type="password"
                   placeholder="CVV"
-                  {...register("cvv", { required: true, validate: ValidateCvv })}
+                  {...register("cvv", {
+                    required: true,
+                    validate: ValidateCvv,
+                  })}
                 />
                 {errors.cvv && <span>El codigo ingresado es incorrecto</span>}
               </label>
@@ -116,14 +130,14 @@ const Payment = () => {
             Direccion
             <input
               className="form-control my-2"
-              type="number"
+              type="street-address"
               placeholder="Direccion"
               {...register("direccion", { required: true })}
             />
             {errors.direccion && <span>falta la direccion</span>}
           </label>
 
-          <button type="submit" className="boton__form" >
+          <button type="submit" className="boton__form">
             Pagar ahora
           </button>
         </form>

@@ -4,6 +4,7 @@ import { getPizzas } from "../../services/getApiInfo";
 import './home.scss';
 import { useNavigate} from "react-router-dom";
 
+import cupon from '../images/cupon.png'
 
 function Home() {
 
@@ -29,6 +30,11 @@ function Home() {
 
     return (
         <>
+        <div className="contenedor__cupon">
+        <img src={cupon} alt="" className="home__cupon"/>
+        <img src={cupon} alt="" className="home__cupon" />
+        <img src={cupon} alt="" className="home__cupon"/>
+        </div>
             <div className="container">
                 {
                     load ?
