@@ -30,22 +30,18 @@ const Router = () => {
             }}>
 
                 <PizzasContext.Provider value={[]}>
-                    <Routes>
-                        <Route element={<Layout />}>
-                            <Route path="/" element={<Login />} />
-                            <Route path="register" element={<Register />} />
-                        </Route>
+                    <ShopContext.Provider value={{}}>
 
-
-                        <ShopContext.Provider value={{}}>
+                        <Routes>
+                            <Route element={<Layout />}>
+                                <Route path="/" element={<Login />} />
+                                <Route path="register" element={<Register />} />
+                            </Route>
                             <Route element={<LayoutHome />}>
                                 <Route path="home" element={<Home />} />
                             </Route>
-
-
-                        </ShopContext.Provider>
-
-                    </Routes>
+                        </Routes>
+                    </ShopContext.Provider>
                 </PizzasContext.Provider>
             </UserContext.Provider>
         </BrowserRouter>
