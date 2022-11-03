@@ -7,11 +7,8 @@ import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
 import Search from "../components/pages/Search"
 import Pizza from "../components/pages/Pizza"
-<<<<<<< HEAD
-=======
 import Payment from "../components/payment/Payment";
 import Procesado from "../components/payment/Procesado";
->>>>>>> 6545abb98c738de7ff24f770acb4502f915bdbbc
 
 export const UserContext = createContext()
 export const ShopContext = createContext()

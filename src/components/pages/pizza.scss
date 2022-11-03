@@ -65,7 +65,10 @@
     &__info{
         display: flex;
         flex-direction: column;
-        margin-top: 5px;
+        margin-top: 20px;
+        gap: 15px;
+        height: max-content;
+        padding-left: 20px;
         p{
             color: lightgrey
         }
@@ -73,20 +76,22 @@
     &__reviews{
         display: flex;
         flex-wrap: wrap;
-        max-height: max-content;
+        height: max-content;
         margin-top: 32px;
     }
     &__review{
         display: flex;
         width: 100%;
         gap: 15px;
+        height: max-content;
         justify-content: flex-start;
     }
     &__reviewInfo{
         display: flex;
+        height: max-content;
         flex-direction: column;
         span{
-            margin-bottom: 3px;
+            margin-bottom: 10px;
         }
         p{
             transform: translateY(-20px);
@@ -179,7 +184,8 @@
         align-items: center;
     }
     &__info{
-        padding: 20px;
+        padding: 30px;
+        align-items: center;
     }
     &__reviews{
         margin-top: 40px;
