@@ -6,6 +6,7 @@ import Home from "../components/pages/Home";
 import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
 import Payment from "../components/payment/Payment";
+import Procesado from "../components/payment/Procesado";
 
 export const UserContext = createContext()
 
@@ -32,6 +33,7 @@ const Router = () => {
                         <Route path="home" element={<Home />} />
                     </Route>
                     <Route path="payment" element={<Payment />} />
+                    <Route path="procesado" element={<Procesado />} />
                 </Routes>
             </UserContext.Provider>
 

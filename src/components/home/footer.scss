@@ -36,9 +36,30 @@
     width: 60px;
     border-radius: 50%;
     margin-top: -115px;
-    margin-left: 600px;
     
+    
+}
+.center{
+    display: flex;
+    justify-content: center;
 }
 .iconos__footer1{
     height: 30px;
+}
+.footer__home{
+    display: flex;
+    gap: 8px;
+    margin-left: 10px;
+}
+.footer__buscar{
+    display: flex;
+    gap: 8px;
+    margin-right: 10px;
+}
+.button__footer{
+    border-style: none;
+    background-color: transparent;
+}
+@media screen and (max-width:700) {
+
 }

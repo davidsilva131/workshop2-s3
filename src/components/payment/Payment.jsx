@@ -1,20 +1,25 @@
 import React from "react";
-import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import "../payment/payment.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  
+ 
+
   const onSubmit = (data) => {
     console.log(data);
+    navigate("/procesado");
+    
   };
 
   const ValidateTarjeta = (value) => {
@@ -43,10 +48,11 @@ const Payment = () => {
   };
 
 
+
   return (
     <>
       <div className="contenedor__todo">
-        <form onSubmit={handleSubmit(onSubmit)} className="containerformulario">
+        <form onSubmit={handleSubmit(onSubmit)} className="containerformulario" >
           <h2>Carrito de compras</h2>
           <div className="card__compra"></div>
           <h2>Informacion de compra</h2>
@@ -110,7 +116,7 @@ const Payment = () => {
             {errors.direccion && <span>falta la direccion</span>}
           </label>
 
-          <button type="submit" className="boton__form">
+          <button type="submit" className="boton__form" >
             Pagar ahora
           </button>
         </form>
