@@ -1,8 +1,26 @@
 import { Avatar, Rating } from "@mui/material";
-import React from "react";
-import './pizza.scss'
+import React, { useEffect, useState } from "react";
+// import { useNavigate } from "react-router";
+import './style.scss'
 
 const Pizza = () => {
+
+    // const navigate = useNavigate()
+
+    const [productQuantity, setProductQuantity] = useState(1)
+
+    const sumQuantity = () => {
+        setProductQuantity(productQuantity + 1)
+    }
+
+    const resQuantity = () => {
+        if (productQuantity > 1) {
+            setProductQuantity(productQuantity - 1)
+        } else {
+            setProductQuantity(1)
+        }
+    }
+
   return (
     <div className="body">
       <div className="main">
@@ -58,9 +76,9 @@ const Pizza = () => {
     <div className="buySection">
         <div className="buySection__container container">
           <div className="buySection__counter">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button onClick={resQuantity}>-</button>
+            <span>{productQuantity}</span>
+            <button onClick={sumQuantity}>+</button>
           </div>
           <button className="buySection__cartButton">
             <img
