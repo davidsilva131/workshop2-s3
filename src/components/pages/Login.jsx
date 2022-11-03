@@ -6,9 +6,11 @@ import './Login.scss'
 function Login() {
     return (
         <>
-            <div className="login">
-                <Logo />
-                <Form />
+            <div className="wrapper">
+                <div className="login">
+                    <Logo />
+                    <Form />
+                </div>
             </div>
         </>
     )
