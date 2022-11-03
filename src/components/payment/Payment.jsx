@@ -1,20 +1,32 @@
-import React from "react";
-import Swal from "sweetalert2";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "../payment/payment.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
-const Payment = () => {
+import { useNavigate } from "react-router-dom";
+import { ShopContext } from "../../routes/Router";
 
+const Payment = () => {
+  const navigate = useNavigate()
+  const { shop } = useContext(ShopContext)
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+
+  useEffect(() => {
+    console.log(shop);
+
+  }, []);
+
+
   const onSubmit = (data) => {
     console.log(data);
+    navigate("/procesado");
+
   };
 
   const ValidateTarjeta = (value) => {
@@ -26,27 +38,28 @@ const Payment = () => {
       return true;
     }
   };
- 
- const ValidateFecha = (value) => {
+
+  const ValidateFecha = (value) => {
     if (value.length < 4) {
       return "El numero debe contener exactamente 4 caracteres";
-    }  else {
+    } else {
       return true;
     }
   };
   const ValidateCvv = (value) => {
     if (value.length < 3) {
       return "El numero debe contener exactamente 3 caracteres";
-    }  else {
+    } else {
       return true;
     }
   };
 
 
+
   return (
     <>
       <div className="contenedor__todo">
-        <form onSubmit={handleSubmit(onSubmit)} className="containerformulario">
+        <form onSubmit={handleSubmit(onSubmit)} className="containerformulario" >
           <h2>Carrito de compras</h2>
           <div className="card__compra"></div>
           <h2>Informacion de compra</h2>
@@ -67,7 +80,7 @@ const Payment = () => {
               className="form-control my-2"
               type="number"
               placeholder="Numero de tarjeta"
-          {...register("tarjeta", { required: true, validate: ValidateTarjeta })}
+              {...register("tarjeta", { required: true, validate: ValidateTarjeta })}
             />
             {errors.tarjeta && <span>El numero ingresado no pertenece a ninguna tarjeta</span>}
           </label>
@@ -80,7 +93,7 @@ const Payment = () => {
                   className="form-control my-2"
                   type="number"
                   placeholder="Fecha de vencimiento"
-          {...register("fecha", { required: true, validate: ValidateFecha })}
+                  {...register("fecha", { required: true, validate: ValidateFecha })}
 
                 />
                 {errors.fecha && <span>la fecha ingresada es invalida</span>}
@@ -110,7 +123,7 @@ const Payment = () => {
             {errors.direccion && <span>falta la direccion</span>}
           </label>
 
-          <button type="submit" className="boton__form">
+          <button type="submit" className="boton__form" >
             Pagar ahora
           </button>
         </form>

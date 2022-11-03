@@ -36,10 +36,6 @@ function LayoutHome() {
         protectedRoute(navigate, setUser)
     }, []);
 
-    const pago = () => {
-        navigate("/payment");
-      }; 
-    
     
 
     return (
@@ -112,7 +108,6 @@ function LayoutHome() {
             </header>
 
             <Outlet />
-            <button onClick={pago}>m</button>
             <Footer/>
         </>
     )

@@ -7,6 +7,11 @@ import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
 import Search from "../components/pages/Search"
 import Pizza from "../components/pages/Pizza"
+<<<<<<< HEAD
+=======
+import Payment from "../components/payment/Payment";
+import Procesado from "../components/payment/Procesado";
+>>>>>>> 6545abb98c738de7ff24f770acb4502f915bdbbc
 
 export const UserContext = createContext()
 export const ShopContext = createContext()
@@ -32,7 +37,7 @@ const Router = () => {
             }}>
 
                 <PizzasContext.Provider value={{ pizzas, setPizzas }}>
-                    <ShopContext.Provider value={{}}>
+                    <ShopContext.Provider value={{ shop, setShop }}>
 
                         <Routes>
                             <Route element={<Layout />}>
@@ -45,6 +50,8 @@ const Router = () => {
                             </Route>
                             <Route path="details/:name" element={<Pizza />}></Route>
                             <Route path="*" element={<Home />} />
+                            <Route path="payment" element={<Payment />} />
+                            <Route path="procesado" element={<Procesado />} />
                         </Routes>
                     </ShopContext.Provider>
                 </PizzasContext.Provider>
