@@ -6,6 +6,8 @@ import Home from "../components/pages/Home";
 import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
 import Search from "../components/pages/Search"
+import Pizza from "../components/pages/Pizza"
+
 export const UserContext = createContext()
 export const ShopContext = createContext()
 export const PizzasContext = createContext()
@@ -41,6 +43,8 @@ const Router = () => {
                                 <Route path="home" element={<Home />} />
                                 <Route path="search" element={<Search />} />
                             </Route>
+                            <Route path="details/:name" element={<Pizza />}></Route>
+                            <Route path="*" element={<Home />} />
                         </Routes>
                     </ShopContext.Provider>
                 </PizzasContext.Provider>
