@@ -6,6 +6,7 @@ import { UserContext } from "../../routes/Router";
 import { useNavigate } from "react-router-dom";
 import './LayoutHome.scss'
 import { protectedRoute } from "../../utils/session";
+import Footer from "./Footer";
 
 function LayoutHome() {
     const navigate = useNavigate()
@@ -35,6 +36,11 @@ function LayoutHome() {
         protectedRoute(navigate, setUser)
     }, []);
 
+    const pago = () => {
+        navigate("/payment");
+      }; 
+    
+    
 
     return (
         <>
@@ -106,6 +112,8 @@ function LayoutHome() {
             </header>
 
             <Outlet />
+            <button onClick={pago}>m</button>
+            <Footer/>
         </>
     )
 }
