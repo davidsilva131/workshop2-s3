@@ -1,0 +1,208 @@
+.body {
+    width: 100%;
+    height: 100vh;
+    background-color: #FF2E2E;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.main {
+    background-color: #2d2d2d;
+    width: 100%;
+    height: 88vh;
+    color: #F9F7F5;
+    border-radius: 0 0 25px 25px;
+    overflow-y: scroll;
+    &__header{
+        height: 30vh;
+        background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/0e/94/0a/7c/yaaayyyy.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+    &__goBack{
+        display: flex;
+        align-items: center;
+        width: max-content;
+        position: relative;
+        top: 5px;
+        left: 5px;
+        font-size: 17px;
+        cursor: pointer;
+        &:hover{
+            transform: translateX(-4px);
+            transition: 0.3s;
+        }
+    }
+    &__chips {
+        display: flex;
+        gap: 15px;
+    }
+    &__chips1{
+        display: flex;
+        align-items: center;
+        height: 35px;
+        padding: 10px 15px;
+        background-color: #FF2E2E;
+        border: none;
+        border-radius: 20px;
+        color: #F9F7F5;
+        cursor: pointer;
+    }
+    &__chips2{
+        display: flex;
+        align-items: center;
+        height: 35px;
+        padding: 10px 15px;
+        background-color: #FFA500;
+        border: none;
+        border-radius: 20px;
+        color: #F9F7F5;
+        cursor: pointer;
+    }
+
+    &__info{
+        margin-top: 5px;
+        p{
+            color: lightgrey
+        }
+    }
+
+    &__reviews{
+        display: flex;
+        flex-wrap: wrap;
+        max-height: max-content;
+        margin-top: 32px;
+    }
+
+    &__review{
+        display: flex;
+        width: 100%;
+        gap: 15px;
+        justify-content: flex-start;
+    }
+
+    &__reviewInfo{
+        display: flex;
+        flex-direction: column;
+        span{
+            margin-bottom: 3px;
+        }
+        p{
+            transform: translateY(-20px);
+            color: lightgrey;
+        }
+    }
+    
+}
+
+.buySection{
+    height: 12vh;
+    &__container{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__counter{
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        button{
+            width: 35px;
+            height: 35px;
+            background: none;
+            color: #F9F7F5;
+            font-size: 30px;
+            border: none;
+            cursor: pointer;
+        }
+        span{
+            font-size: 18px;
+            color: #F9F7F5;
+        }
+    }
+    &__cartButton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 45px;
+        width: 50px;
+        background: none;
+        border: 1px solid #F9F7F5;
+        border-radius: 5px;
+        cursor: pointer;
+        img{
+            width:25px;
+        }
+    }
+    &__buyButton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 45px;
+        width: 90px;
+        background-color: #F9F7F5;
+        color: #FF2E2E;
+        border: none;
+        border-radius: 5px; 
+        cursor: pointer;  
+    }
+}
+
+@media screen and (min-width: 450px){
+    .main{
+        &__header{
+            height: 35vh
+        }
+    }
+}
+
+@media screen and (min-width: 580px){
+   .main{
+    &__header{
+            height: 40vh
+        }
+ 
+   }
+}
+
+@media screen and (min-width: 720px){
+   .main{
+    display: flex;
+    &__header{
+        width: 50%;
+        height: 45vh;
+    }
+    &__goBack{
+        top: 10px;
+        left: 10px;
+    }
+    &__contentContainer{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__info{
+        padding: 20px;
+    }
+    &__reviews{
+        margin-top: 40px;
+    }
+    &__review{
+        justify-content: center;     
+   }
+}
+}
+
+@media screen and (min-width: 1200px){
+    .main{
+     &__header{
+             height: 60vh
+         }  
+    }
+ }
