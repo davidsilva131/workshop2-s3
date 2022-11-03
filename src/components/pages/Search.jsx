@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import './Search.scss'
 import { Button, Card, CardActionArea, CardContent, CardMedia, Chip, Typography } from "@mui/material";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import { PizzasContext } from "../../routes/Router";
 import { getPizzas } from "../../services/getApiInfo";
 
@@ -13,6 +13,7 @@ function Search() {
   const { setPizzas } = useContext(PizzasContext)
   const [load, setLoad] = useState(false)
   const [dataFiltered, setDataFiltered] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     getPizzasInfo()
@@ -46,7 +47,6 @@ function Search() {
         setDataFiltered(tempFilter)
       }
     }
-    console.log(dataFiltered);
   }
 
   const getPizzasInfo = async () => {
@@ -55,8 +55,9 @@ function Search() {
     setLoad(true)
   }
 
-  const handleClickCard = () => {
-    console.log('le da click');
+  const handleClickCard = (name) => {
+    const tempName = name.toLowerCase();
+    navigate(`/details/${tempName}`)
   }
 
   return (
@@ -84,7 +85,7 @@ function Search() {
                       (
                         dataFiltered.map((pizza, index) =>
                           <Card key={index} sx={{ width: 345, display: 'flex' }}>
-                            <CardActionArea onClick={handleClickCard}>
+                            <CardActionArea onClick={() => { handleClickCard(pizza.name) }}>
                               <CardMedia
                                 component="img"
                                 height="140"

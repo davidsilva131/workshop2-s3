@@ -4,9 +4,9 @@ import LayoutHome from "../components/home/LayoutHome";
 import Layout from "../components/login/Layout";
 import Home from "../components/pages/Home";
 import Login from "../components/pages/Login";
-import Pizza from "../components/pages/Pizza";
 import Register from "../components/pages/Register";
 import Search from "../components/pages/Search"
+import Pizza from "../components/pages/Pizza"
 import Payment from "../components/payment/Payment";
 import Procesado from "../components/payment/Procesado";
 
@@ -45,6 +45,8 @@ const Router = () => {
                                 <Route path="home" element={<Home />} />
                                 <Route path="search" element={<Search />} />
                             </Route>
+                            <Route path="details/:name" element={<Pizza />}></Route>
+                            <Route path="*" element={<Home />} />
                             <Route path="payment" element={<Payment />} />
                             <Route path="procesado" element={<Procesado />} />
                         </Routes>
