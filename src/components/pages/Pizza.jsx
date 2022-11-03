@@ -1,7 +1,7 @@
 import { Avatar, Rating } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
-import { PizzasContext, ShopContext } from "../../routes/Router";
+import { PizzasContext } from "../../routes/Router";
 import './pizza.scss'
 
 
@@ -9,7 +9,6 @@ const Pizza = () => {
   const [load, setLoad] = useState(false)
   const { name } = useParams()
   const { pizzas } = useContext(PizzasContext)
-  const { setShop } = useContext(ShopContext)
   const [pizza, setPizza] = useState({})
   const [count, setCount] = useState(1)
   const navigate = useNavigate()
@@ -52,24 +51,16 @@ const Pizza = () => {
 
   const handleLess = () => {
     if (count > 1) {
-      let tempCount = count;
-      setCount(tempCount - 1)
+      let temp = count;
+      setCount(temp - 1)
     }
   }
 
   const handlePlus = () => {
-    let tempCount = count;
-    setCount(tempCount + 1)
+    let temp = count;
+    setCount(temp + 1)
   }
 
-  const handlePay = () => {
-    let shop = {
-      ...pizza,
-      quantity: count
-    };
-    setShop(shop)
-    navigate('payment')
-  }
 
   return (
     <>
@@ -122,7 +113,7 @@ const Pizza = () => {
                   alt="cart icon"
                 />
               </button>
-              <button onClick={handlePay} className="buySection__buyButton">Pagar</button>
+              <button className="buySection__buyButton">Pagar</button>
             </div>
           </div>
         </div>
