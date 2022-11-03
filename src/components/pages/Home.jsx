@@ -1,12 +1,54 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../routes/Router";
+import React, { useContext, useEffect, useState } from "react";
+import { PizzasContext } from "../../routes/Router";
+import { getPizzas } from "../../services/getApiInfo";
+import './home.scss'
 
 function Home() {
 
-    const { user } = useContext(UserContext);
+    const { pizzas, setPizzas } = useContext(PizzasContext);
+
+    useEffect(() => {
+        getPizzasInfo()
+    }, []);
+
+    const [load, setLoad] = useState(false)
+
+    const getPizzasInfo = async () => {
+        const [response] = await Promise.all([getPizzas()])
+        setPizzas(response)
+        setLoad(true)
+    }
 
     return (
-        <div>Pagina Home</div>
+        <>
+            <div className="container">
+                {
+                    load ?
+                        (
+                            <ul className="container__card">
+                                {
+                                    pizzas.map((pizza, index) =>
+                                        <li key={index} className="card">
+                                            <img src={pizza.image} alt="Pizza image" className="pizzaCard" />
+                                            <div className="infoProduct">
+                                                <h3>
+                                                    {pizza.description}
+                                                </h3>
+                                                <button><span>${pizza.price}</span></button>
+                                            </div>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        ) :
+                        (
+                            <div>Cargando</div>
+                        )
+                }
+
+            </div>
+        </>
+
     )
 }
 

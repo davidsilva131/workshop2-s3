@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 
 import { useForm } from "react-hook-form";
 import { getUser } from "../../services/getApiInfo";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import './Form.scss'
 import { redirectUser } from "../../utils/session";
@@ -40,6 +40,10 @@ function Form() {
     return (
         <>
             <form className="form" onSubmit={handleSubmit(login)} >
+                <div className="form__start">
+                    <h2>Inicia sesión en tu cuenta</h2>
+                    <span>Disfruta de la mejor Pizza creada para las personas amantes del Código</span>
+                </div>
                 <div className="form__input">
                     <UserIcon />
                     <input placeholder="Correo" type="email" {...register("email", { required: true })} />
@@ -51,6 +55,11 @@ function Form() {
                     {errors.password && <span>El password es obligatorio</span>}
                 </div>
                 <Button type="submit" variant="contained" sx={{ backgroundColor: 'white', color: 'black', fontWeight: '800', ":hover": { backgroundColor: '#FE144C' } }}>Ingresar</Button>
+                <h3>Restablecer contraseña</h3>
+                <div className="logUp">
+                    <h4>¿No tienes una cuenta?</h4>
+                    <h3><Link to="/register" className="logUp__register">Regístrate aquí</Link></h3>
+                </div>
             </form>
         </>
     )

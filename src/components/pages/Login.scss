@@ -1,25 +1,33 @@
 @import '../../styles/universal.scss';
 
-.login{
+.wrapper {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100vw;
     height: 100vh;
-    &__logo{
+    width: 100vw;
+    .login {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 150px;
-        img{
-            width: 50px;
-        }
-        h1{
-            font-family: $fontFamily;
-            font-size: 30px;
-            font-weight: 800;
+        width: 33%;
+        height: 100%;
+        color: white;
+
+        &__logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            img {
+                width: 50px;
+            }
+
+            h1 {
+                font-family: $fontFamily;
+                font-size: 30px;
+                font-weight: 800;
+            }
         }
     }
 }

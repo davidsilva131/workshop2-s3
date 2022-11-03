@@ -5,7 +5,8 @@ import Layout from "../components/login/Layout";
 import Home from "../components/pages/Home";
 import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
-import Payment from "../components/payment/Payment";
+import Search from "../components/pages/Search"
+import Pizza from "../components/pages/Pizza"
 
 export const UserContext = createContext()
 export const ShopContext = createContext()
@@ -30,7 +31,7 @@ const Router = () => {
                 setUser,
             }}>
 
-                <PizzasContext.Provider value={[]}>
+                <PizzasContext.Provider value={{ pizzas, setPizzas }}>
                     <ShopContext.Provider value={{}}>
 
                         <Routes>
@@ -40,8 +41,10 @@ const Router = () => {
                             </Route>
                             <Route element={<LayoutHome />}>
                                 <Route path="home" element={<Home />} />
+                                <Route path="search" element={<Search />} />
                             </Route>
-                            <Route path="payment" element={<Payment />} />
+                            <Route path="details/:name" element={<Pizza />}></Route>
+                            <Route path="*" element={<Home />} />
                         </Routes>
                     </ShopContext.Provider>
                 </PizzasContext.Provider>
