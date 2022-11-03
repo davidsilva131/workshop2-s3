@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Button from '@mui/material/Button';
 import { registerUser } from "../../services/postUser";
 import Swal from 'sweetalert2';
-import { redirect, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { redirectUser } from "../../utils/session";
 
 
@@ -92,8 +92,10 @@ function RegisterForm() {
                     <input placeholder="Imagen" type="url" {...register("image", { required: true })} />
                     {errors.image && <span>La imagen es obligatoria</span>}
                 </div>
-                <Button type="submit" variant="contained" sx={{ backgroundColor: 'white', color: 'black', fontWeight: '800' }}>Registrarse</Button>
-
+                <Button type="submit" variant="contained" sx={{ backgroundColor: 'white', color: 'black', fontWeight: '800', ":hover": { backgroundColor: '#FE144C' } }}>Registrarse</Button>
+                <div className="logUp">
+                    <h3><Link to="/" className="logUp__register">Iniciar Sesión</Link></h3>
+                </div>
             </form>
         </>
     )

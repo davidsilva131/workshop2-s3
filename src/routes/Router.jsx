@@ -9,6 +9,8 @@ import Payment from "../components/payment/Payment";
 import Procesado from "../components/payment/Procesado";
 
 export const UserContext = createContext()
+export const ShopContext = createContext()
+export const PizzasContext = createContext()
 
 const Router = () => {
     const [user, setUser] = useState({
@@ -18,27 +20,35 @@ const Router = () => {
         name: ''
     });
 
+    const [shop, setShop] = useState({})
+    const [pizzas, setPizzas] = useState([])
+
     return (
+
         <BrowserRouter>
             <UserContext.Provider value={{
                 user,
                 setUser,
             }}>
-                <Routes>
-                    <Route element={<Layout />}>
-                        <Route path="/" element={<Login />} />
-                        <Route path="register" element={<Register />} />
-                    </Route>
-                    <Route element={<LayoutHome />}>
-                        <Route path="home" element={<Home />} />
-                    </Route>
-                    <Route path="payment" element={<Payment />} />
+                <PizzasContext.Provider value={[]}>
+                    <ShopContext.Provider value={{}}>
+
+                        <Routes>
+                            <Route element={<Layout />}>
+                                <Route path="/" element={<Login />} />
+                                <Route path="register" element={<Register />} />
+                            </Route>
+                            <Route element={<LayoutHome />}>
+                                <Route path="home" element={<Home />} />
+                            </Route>
+                            <Route path="payment" element={<Payment />} />
                     <Route path="procesado" element={<Procesado />} />
-                </Routes>
+                        </Routes>
+                    </ShopContext.Provider>
+                </PizzasContext.Provider>
             </UserContext.Provider>
-
-
         </BrowserRouter>
+
     )
 }
 export default Router;
