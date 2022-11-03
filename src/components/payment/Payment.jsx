@@ -6,6 +6,7 @@ import "bootstrap/dist/js/bootstrap";
 
 import { useNavigate } from "react-router-dom";
 import { ShopContext } from "../../routes/Router";
+import { postShop } from "../../services/postShop";
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -16,12 +17,17 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    console.log(shop);
-  }, []);
 
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async (data) => {
+    let temp = {
+      userName: data.name,
+      userAddress: data.direccion,
+      pizzaId: shop.id,
+      quantity: shop.quantity,
+      totalPrice: shop.price * shop.quantity
+    }
+    const response = await postShop(temp)
     navigate("/procesado");
   };
 
@@ -49,7 +55,7 @@ const Payment = () => {
       return true;
     }
   };
-  const total =Math.round((shop.price )*(shop.quantity)) ;
+  const total = Math.round((shop.price) * (shop.quantity));
   console.log(total)
   return (
     <>
