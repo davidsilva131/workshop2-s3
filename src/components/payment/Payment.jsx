@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "../payment/payment.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
 import { useNavigate } from "react-router-dom";
+import { ShopContext } from "../../routes/Router";
 
 const Payment = () => {
   const navigate = useNavigate()
+  const { shop } = useContext(ShopContext)
   const {
     register,
     handleSubmit,
@@ -15,6 +17,10 @@ const Payment = () => {
   } = useForm();
 
 
+  useEffect(() => {
+    console.log(shop);
+
+  }, []);
 
 
   const onSubmit = (data) => {

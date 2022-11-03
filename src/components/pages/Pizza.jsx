@@ -1,13 +1,14 @@
 import { Avatar, Rating } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
-import { PizzasContext } from "../../routes/Router";
+import { PizzasContext, ShopContext } from "../../routes/Router";
 import './pizza.scss'
 
 
 const Pizza = () => {
   const [load, setLoad] = useState(false)
   const { name } = useParams()
+  const { setShop } = useContext(ShopContext)
   const { pizzas } = useContext(PizzasContext)
   const [pizza, setPizza] = useState({})
   const [count, setCount] = useState(1)
@@ -16,9 +17,15 @@ const Pizza = () => {
   useEffect(() => {
     getPizzaInfo()
   }, []);
+
   const pago = () => {
+    let temp = {
+      ...pizza,
+      quantity: count
+    }
+    setShop(temp)
     navigate("/payment");
-  }; 
+  };
 
   const getPizzaInfo = () => {
     let tempPizza = pizzas.find((pizza) => pizza.name === name.toUpperCase())

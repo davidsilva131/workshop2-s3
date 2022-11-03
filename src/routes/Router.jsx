@@ -34,7 +34,7 @@ const Router = () => {
             }}>
 
                 <PizzasContext.Provider value={{ pizzas, setPizzas }}>
-                    <ShopContext.Provider value={{}}>
+                    <ShopContext.Provider value={{ shop, setShop }}>
 
                         <Routes>
                             <Route element={<Layout />}>
