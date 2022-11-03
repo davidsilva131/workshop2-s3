@@ -5,7 +5,7 @@ import Layout from "../components/login/Layout";
 import Home from "../components/pages/Home";
 import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
-
+import Search from "../components/pages/Search"
 export const UserContext = createContext()
 export const ShopContext = createContext()
 export const PizzasContext = createContext()
@@ -29,7 +29,7 @@ const Router = () => {
                 setUser,
             }}>
 
-                <PizzasContext.Provider value={[]}>
+                <PizzasContext.Provider value={{ pizzas, setPizzas }}>
                     <ShopContext.Provider value={{}}>
 
                         <Routes>
@@ -39,6 +39,7 @@ const Router = () => {
                             </Route>
                             <Route element={<LayoutHome />}>
                                 <Route path="home" element={<Home />} />
+                                <Route path="search" element={<Search />} />
                             </Route>
                         </Routes>
                     </ShopContext.Provider>

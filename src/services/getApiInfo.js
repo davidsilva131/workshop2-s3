@@ -16,3 +16,9 @@ export const getUserByEmail = async (email) => {
     }
 
 }
+
+export const getPizzas = async () => {
+    const { data } = await axios.get(`${URL_API}/menu`)
+    return data
+
+}
