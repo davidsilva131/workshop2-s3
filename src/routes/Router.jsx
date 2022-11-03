@@ -7,6 +7,8 @@ import Login from "../components/pages/Login";
 import Register from "../components/pages/Register";
 import Search from "../components/pages/Search"
 import Pizza from "../components/pages/Pizza"
+import Payment from "../components/payment/Payment";
+import Procesado from "../components/payment/Procesado";
 
 export const UserContext = createContext()
 export const ShopContext = createContext()
@@ -45,6 +47,8 @@ const Router = () => {
                             </Route>
                             <Route path="details/:name" element={<Pizza />}></Route>
                             <Route path="*" element={<Home />} />
+                            <Route path="payment" element={<Payment />} />
+                            <Route path="procesado" element={<Procesado />} />
                         </Routes>
                     </ShopContext.Provider>
                 </PizzasContext.Provider>
