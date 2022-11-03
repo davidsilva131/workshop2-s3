@@ -1,7 +1,7 @@
 import { Avatar, Rating } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
-import { PizzasContext } from "../../routes/Router";
+import { PizzasContext, ShopContext } from "../../routes/Router";
 import './pizza.scss'
 
 
@@ -9,8 +9,9 @@ const Pizza = () => {
   const [load, setLoad] = useState(false)
   const { name } = useParams()
   const { pizzas } = useContext(PizzasContext)
+  const { setShop } = useContext(ShopContext)
   const [pizza, setPizza] = useState({})
-
+  const [count, setCount] = useState(1)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -47,6 +48,27 @@ const Pizza = () => {
 
   const handleGoBack = () => {
     navigate(-1)
+  }
+
+  const handleLess = () => {
+    if (count > 1) {
+      let tempCount = count;
+      setCount(tempCount - 1)
+    }
+  }
+
+  const handlePlus = () => {
+    let tempCount = count;
+    setCount(tempCount + 1)
+  }
+
+  const handlePay = () => {
+    let shop = {
+      ...pizza,
+      quantity: count
+    };
+    setShop(shop)
+    navigate('payment')
   }
 
   return (
@@ -90,9 +112,9 @@ const Pizza = () => {
           <div className="buySection">
             <div className="buySection__container container">
               <div className="buySection__counter">
-                <button>-</button>
-                <span>1</span>
-                <button>+</button>
+                <button onClick={handleLess}>-</button>
+                <span>{count}</span>
+                <button onClick={handlePlus}>+</button>
               </div>
               <button className="buySection__cartButton">
                 <img
@@ -100,7 +122,7 @@ const Pizza = () => {
                   alt="cart icon"
                 />
               </button>
-              <button className="buySection__buyButton">Pagar</button>
+              <button onClick={handlePay} className="buySection__buyButton">Pagar</button>
             </div>
           </div>
         </div>
