@@ -78,8 +78,8 @@ const Pizza = () => {
         <div className="body">
           <div className="main">
             <section className="main__header" style={{ backgroundImage: `url(${pizza.image})` }}>
-              <div className="main__goBack">
-                <span onClick={handleGoBack}><img src="https://qualityhomescostacalida.com/assets/layout/chevron-left.png" width="35px" /></span>Todas las pizzas
+              <div className="main__goBack" onClick={handleGoBack}>
+                <span><img src="https://qualityhomescostacalida.com/assets/layout/chevron-left.png" width="35px" /></span>Todas las pizzas
               </div>
             </section>
             <div className="main__contentContainer">
