@@ -7,6 +7,9 @@ const Footer = () => {
     const home = () => {
         navigate("/home");
       }; 
+      const search = () => {
+        navigate("/search");
+      };
   return (
     <>
       <div className="footer">
@@ -24,7 +27,7 @@ const Footer = () => {
           </div>
 
           <div className="footer__buscar">
-            <button className="button__footer">
+            <button className="button__footer" onClick={search}>
             <img
               src="https://cdn-icons-png.flaticon.com/512/7764/7764538.png"
               alt=""

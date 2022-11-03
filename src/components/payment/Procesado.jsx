@@ -1,6 +1,12 @@
 import React from 'react'
 import '../payment/procesado.scss'
+import { useNavigate } from "react-router-dom";
+
 const Procesado = () => {
+  const navigate = useNavigate()
+    const home = () => {
+        navigate("/home");
+      }; 
   return (
     <>
     <div className='contenedor__procesado'>
@@ -10,7 +16,7 @@ const Procesado = () => {
     
     <p className='titulo__procesado'>Tu pedido esta en proceso</p>
     <p>Seras notificado cuando llegue el repartidor</p>
-    <button type="submit" className="boton__procesado" >
+    <button type="submit" className="boton__procesado" onClick={home}>
             Aceptar
           </button>
     </div>

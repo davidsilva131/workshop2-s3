@@ -112,7 +112,7 @@ function LayoutHome() {
             </header>
 
             <Outlet />
-            <button onClick={pago}>m</button>
+            <button className="boton__pago" onClick={pago}>m</button>
             <Footer/>
         </>
     )
