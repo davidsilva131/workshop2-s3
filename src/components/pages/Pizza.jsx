@@ -16,6 +16,9 @@ const Pizza = () => {
   useEffect(() => {
     getPizzaInfo()
   }, []);
+  const pago = () => {
+    navigate("/payment");
+  }; 
 
   const getPizzaInfo = () => {
     let tempPizza = pizzas.find((pizza) => pizza.name === name.toUpperCase())
@@ -113,7 +116,7 @@ const Pizza = () => {
                   alt="cart icon"
                 />
               </button>
-              <button className="buySection__buyButton">Pagar</button>
+              <button className="buySection__buyButton" onClick={pago}>Pagar</button>
             </div>
           </div>
         </div>
