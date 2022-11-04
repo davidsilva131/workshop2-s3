@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "../payment/payment.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,6 +22,9 @@ const Payment = () => {
       navigate('/home')
     }
   }
+  useEffect(() => {
+    validateCart()
+  }, [])
 
   const onSubmit = async (data) => {
     validateCart()
