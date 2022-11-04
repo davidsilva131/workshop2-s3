@@ -5,34 +5,50 @@
     height: 70vh;
     display: flex;
     justify-content: center;
+    background-color: #FFECEE;
 
     &__card {
-        width: 100%;
-        height: 95%;
+        width: 50vw;
+        height: 100%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         overflow-y: auto;
 
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+
         .card {
             width: 100%;
-            height: 90%;
-            border-radius: 15px;
+            height: 100%;
             list-style: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            border: none;
+            clip-path: circle(35% at 50% 50%);
+            background-color: #FF0A54;
+            margin-bottom: 10px;
 
             img {
                 height: 100%;
-                width: 30%;
-                object-fit: cover;
-                border-radius: 60%;
+                width: 100%;
+                object-fit: contain;
+
 
                 @media screen and (max-width: 900px) {
                     height: 180px;
                     width: 170px;
+                    object-fit: cover;
+                    border-radius: 60%;
+                }
+
+                @media screen and (min-width: 1440) {
+                    height: 100%;
+                    width: 30%;
                     object-fit: cover;
                     border-radius: 60%;
                 }
@@ -44,7 +60,7 @@
             }
 
             div {
-                width: 33%;
+                width: 50%;
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
@@ -54,7 +70,8 @@
                 font-family: $fontFamily;
 
                 h3 {
-                    width: 50%;
+
+                    font-size: 1rem;
                 }
 
                 button {
@@ -74,13 +91,19 @@
     }
 }
 
-.home__cupon{
+.home__cupon {
     width: 95%;
 }
-.contenedor__cupon{
-display: flex;
-height: 8%;
-width: 30%;
-margin-left: 10%;
-background-color: transparent;
+
+.contenedor__cupon {
+    display: flex;
+    height: 8%;
+    width: 30%;
+    margin-left: 10%;
+    background-color: transparent;
+}
+
+
+@media screen and (max-width: 900px) {
+    
 }
