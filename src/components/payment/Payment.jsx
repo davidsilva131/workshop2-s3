@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import "../payment/payment.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-
+import { Avatar, Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ShopContext } from "../../routes/Router";
 import { postShop } from "../../services/postShop";
@@ -65,11 +65,21 @@ const Payment = () => {
   };
   const total = Math.round((shop.price) * (shop.quantity));
   console.log(total)
+  const atras = () => {
+    navigate(-1);
+  };
   return (
     <>
       <div className="contenedor__todo">
+      <div className="boton__salir">
+          <button className="boton__salir__pago" onClick={atras}>
+                <img src="https://cdn-icons-png.flaticon.com/512/3502/3502452.png" alt="" className="boton__atras"/>
+              </button>
+              <h2>Carrito de compras</h2>
+          </div>
         <form onSubmit={handleSubmit(onSubmit)} className="containerformulario">
-          <h2>Carrito de compras</h2>
+          
+          
           <div className="card__compra">
             <img src={shop.image} alt="" className="imagen__shop" />
             <div className="contenedor__shop">
