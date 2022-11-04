@@ -30,7 +30,11 @@
         left: 5px;
         font-size: 17px;
         cursor: pointer;
-        
+        img{
+            filter: brightness(0%);
+-webkit-filter: brightness(0%);
+-moz-filter: brightness(0%);
+        }
         &:hover{
             transform: translateX(-4px);
             transition: 0.3s;

@@ -16,7 +16,14 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
+  const validateCart = () => {
+    if (JSON.stringify(shop) == '{}') {
+      navigate('/home')
+    }
+  }
+
   useEffect(() => {
+    validateCart()
     console.log(shop);
   }, []);
 
