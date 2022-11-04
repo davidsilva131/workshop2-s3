@@ -5,7 +5,7 @@
     height: 70vh;
     display: flex;
     justify-content: center;
-    background-color: #FFECEE;
+
 
     &__card {
         width: 50vw;
@@ -37,14 +37,14 @@
                 height: 100%;
                 width: 100%;
                 object-fit: contain;
+                clip-path: circle(35% at 50% 50%);               
 
-
-                @media screen and (max-width: 900px) {
-                    height: 180px;
-                    width: 170px;
-                    object-fit: cover;
-                    border-radius: 60%;
-                }
+                // @media screen and (max-width: 900px) {
+                //     height: 180px;
+                //     width: 170px;
+                //     object-fit: cover;
+                //     border-radius: 60%;
+                // }
 
                 @media screen and (min-width: 1440) {
                     height: 100%;
