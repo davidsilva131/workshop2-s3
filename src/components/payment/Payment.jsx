@@ -17,8 +17,6 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
-
-
   const onSubmit = async (data) => {
     let temp = {
       userName: data.name,

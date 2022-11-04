@@ -29,30 +29,8 @@ const Pizza = () => {
 
   const getPizzaInfo = () => {
     let tempPizza = pizzas.find((pizza) => pizza.name === name.toUpperCase())
-    tempPizza = {
-      ...tempPizza,
-      review: [
-        {
-          id: 1,
-          menuId: 1,
-          userName: 'Gustavo Silva',
-          userImage: "https://media.istockphoto.com/photos/headshot-portrait-of-smiling-male-employee-in-office-picture-id1309328823?k=20&m=1309328823&s=612x612&w=0&h=RqA2lYygvOxisNPp6UwFjz7bCw_rYITJMqFTMSrhpis=",
-          rating: 1,
-          comment: 'taba fea'
-        },
-        {
-          id: 2,
-          menuId: 1,
-          userName: 'Juan David Silva',
-          userImage: "https://media.istockphoto.com/photos/headshot-portrait-of-smiling-male-employee-in-office-picture-id1309328823?k=20&m=1309328823&s=612x612&w=0&h=RqA2lYygvOxisNPp6UwFjz7bCw_rYITJMqFTMSrhpis=",
-          rating: 1,
-          comment: 'lo de arriba x2'
-        }
-      ]
-    }
     setLoad(true)
     setPizza(tempPizza)
-    console.log(tempPizza);
   }
 
   const handleGoBack = () => {
@@ -87,7 +65,7 @@ const Pizza = () => {
                 <h1>{pizza.name}</h1>
                 <div className="main__chips">
                   <button className="main__chips1">${pizza.price} </button>
-                  <button className="main__chips2">⭐ 2 Reviews</button>
+                  <button className="main__chips2">⭐ {pizza.review.length} Reviews</button>
                 </div>
                 <h3>Descripción</h3>
                 <p>
