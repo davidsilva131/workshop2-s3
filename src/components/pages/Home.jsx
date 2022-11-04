@@ -1,49 +1,65 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../routes/Router";
-import './home.scss'
+import React, { useContext, useEffect, useState } from "react";
+import { PizzasContext } from "../../routes/Router";
+import { getPizzas } from "../../services/getApiInfo";
+import './home.scss';
+import { useNavigate} from "react-router-dom";
+
+import cupon from '../images/cupon.png'
 
 function Home() {
 
-    const { user } = useContext(UserContext);
+    const { pizzas, setPizzas } = useContext(PizzasContext);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getPizzasInfo()
+    }, []);
+
+    const [load, setLoad] = useState(false)
+
+    const getPizzasInfo = async () => {
+        const [response] = await Promise.all([getPizzas()])
+        setPizzas(response)
+        setLoad(true)
+    }
+
+    const pizzaDetail = (pizza) => {
+        const pizzaName = pizza.name.toLowerCase();
+        navigate(`/details/${pizzaName}`)
+    }
 
     return (
         <>
+        <div className="contenedor__cupon">
+        <img src={cupon} alt="" className="home__cupon"/>
+        <img src={cupon} alt="" className="home__cupon" />
+        <img src={cupon} alt="" className="home__cupon"/>
+        </div>
             <div className="container">
-                <ul className="container__card">
-                    <li className="card">
-                        <>
-                            <img src="https://pizzium.com/wp-content/uploads/2022/02/MARGHERITA-1-300x300.jpg" alt="Pizza image" className="pizzaCard" />
-                            <div className="infoProduct">
-                                <h3>
-                                    Pizza súper especial para Frontends
-                                </h3>
-                                <button><span>$99</span> MOON</button>
-                            </div>
-                        </>
-                    </li>
-                    <li className="card">
-                        <>
-                            <img src="https://pizzium.com/wp-content/uploads/2022/02/MARGHERITA-1-300x300.jpg" alt="Pizza image" className="pizzaCard" />
-                            <div className="infoProduct">
-                                <h3>
-                                    Pizza súper especial para Frontends
-                                </h3>
-                                <button><span>$99</span> MOON</button>
-                            </div>
-                        </>
-                    </li>
-                    <li className="card">
-                        <>
-                            <img src="https://pizzium.com/wp-content/uploads/2022/02/MARGHERITA-1-300x300.jpg" alt="Pizza image" className="pizzaCard" />
-                            <div className="infoProduct">
-                                <h3>
-                                    Pizza súper especial para Frontends
-                                </h3>
-                                <button><span>$99</span> MOON</button>
-                            </div>
-                        </>
-                    </li>
-                </ul>
+                {
+                    load ?
+                        (
+                            <ul className="container__card">
+                                {
+                                    pizzas.map((pizza, index) =>
+                                        <li key={index} className="card" onClick={()=>{pizzaDetail(pizza)}}>
+                                            <img src={pizza.image} alt="Pizza image" className="pizzaCard" />
+                                            <div className="infoProduct" >
+                                                <h3 >
+                                                    {pizza.description}
+                                                </h3>
+                                                <button><span>${pizza.price}</span></button>
+                                            </div>
+                                        </li>
+                                    )
+                                }
+                            </ul>
+                        ) :
+                        (
+                            <div>Cargando</div>
+                        )
+                }
+
             </div>
         </>
 

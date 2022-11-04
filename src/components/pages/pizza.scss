@@ -3,17 +3,15 @@
     height: 100vh;
     background-color: #FF2E2E;
 }
-
 .container {
     width: 90%;
     margin: 0 auto;
 }
-
 .main {
-    background-color: #2d2d2d;
+    background-color: #2D2D2D;
     width: 100%;
     height: 88vh;
-    color: #F9F7F5;
+    color: #FF2E2E;
     border-radius: 0 0 25px 25px;
     overflow-y: scroll;
     &__header{
@@ -32,6 +30,11 @@
         left: 5px;
         font-size: 17px;
         cursor: pointer;
+        img{
+            filter: brightness(0%);
+-webkit-filter: brightness(0%);
+-moz-filter: brightness(0%);
+        }
         &:hover{
             transform: translateX(-4px);
             transition: 0.3s;
@@ -63,42 +66,43 @@
         color: #F9F7F5;
         cursor: pointer;
     }
-
     &__info{
-        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 15px;
+        height: max-content;
+        padding-left: 20px;
         p{
             color: lightgrey
         }
     }
-
     &__reviews{
         display: flex;
         flex-wrap: wrap;
-        max-height: max-content;
+        height: max-content;
         margin-top: 32px;
     }
-
     &__review{
         display: flex;
         width: 100%;
         gap: 15px;
+        height: max-content;
         justify-content: flex-start;
     }
-
     &__reviewInfo{
         display: flex;
+        height: max-content;
         flex-direction: column;
         span{
-            margin-bottom: 3px;
+            margin-bottom: 10px;
         }
         p{
             transform: translateY(-20px);
             color: lightgrey;
         }
     }
-    
 }
-
 .buySection{
     height: 12vh;
     &__container{
@@ -148,11 +152,10 @@
         background-color: #F9F7F5;
         color: #FF2E2E;
         border: none;
-        border-radius: 5px; 
-        cursor: pointer;  
+        border-radius: 5px;
+        cursor: pointer;
     }
 }
-
 @media screen and (min-width: 450px){
     .main{
         &__header{
@@ -160,16 +163,13 @@
         }
     }
 }
-
 @media screen and (min-width: 580px){
    .main{
     &__header{
             height: 40vh
         }
- 
    }
 }
-
 @media screen and (min-width: 720px){
    .main{
     display: flex;
@@ -188,21 +188,21 @@
         align-items: center;
     }
     &__info{
-        padding: 20px;
+        padding: 30px;
+        align-items: center;
     }
     &__reviews{
         margin-top: 40px;
     }
     &__review{
-        justify-content: center;     
+        justify-content: center;
    }
 }
 }
-
 @media screen and (min-width: 1200px){
     .main{
      &__header{
              height: 60vh
-         }  
+         }
     }
  }

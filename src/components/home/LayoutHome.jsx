@@ -6,6 +6,7 @@ import { UserContext } from "../../routes/Router";
 import { useNavigate } from "react-router-dom";
 import './LayoutHome.scss'
 import { protectedRoute } from "../../utils/session";
+import Footer from "./Footer";
 
 function LayoutHome() {
     const navigate = useNavigate()
@@ -35,6 +36,7 @@ function LayoutHome() {
         protectedRoute(navigate, setUser)
     }, []);
 
+    
 
     return (
         <>
@@ -106,6 +108,7 @@ function LayoutHome() {
             </header>
 
             <Outlet />
+            <Footer/>
         </>
     )
 }

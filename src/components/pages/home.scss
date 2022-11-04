@@ -7,32 +7,39 @@
     justify-content: center;
 
     &__card {
-        width: 100%;
-        height: 95%;
+        width: 50vw;
+        height: 100%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         overflow-y: auto;
 
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+
         .card {
             width: 100%;
-            height: 90%;
-            border-radius: 15px;
+            height: 100%;
             list-style: none;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            border: none;
+            clip-path: circle(35% at 50% 50%);
+            margin-bottom: 10px;
 
             img {
                 height: 100%;
-                width: 30%;
-                object-fit: cover;
-                border-radius: 60%;
+                width: 100%;
+                object-fit: contain;
+                filter: brightness(65%);
 
-                @media screen and (max-width: 900px) {
-                    height: 180px;
-                    width: 170px;
+                @media screen and (min-width: 1440) {
+                    height: 100%;
+                    width: 30%;
                     object-fit: cover;
                     border-radius: 60%;
                 }
@@ -44,7 +51,7 @@
             }
 
             div {
-                width: 33%;
+                width: 50%;
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
@@ -52,9 +59,11 @@
                 position: absolute;
                 bottom: 20%;
                 font-family: $fontFamily;
+                color: white;
 
                 h3 {
-                    width: 50%;
+
+                    font-size: 1.5rem;
                 }
 
                 button {
@@ -67,6 +76,63 @@
 
                     span {
                         font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.home__cupon {
+    width: 95%;
+}
+
+.contenedor__cupon {
+    display: flex;
+    height: 8%;
+    width: 30%;
+    margin-left: 10%;
+    background-color: transparent;
+}
+
+
+@media screen and (max-width: 500px) {
+    .container {
+
+        &__card {
+            width: 90%;
+
+            .card {
+                width: 100%;
+                height: 100%;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                }
+
+                div {
+                    width: 80%;
+                    transform: translateY(-25px);                    
+
+
+                    h3 {
+
+                        font-size: 18px;
+                        width: 100%;
+                    }
+
+                    button {
+                        height: 40px;
+                        padding: 0 20px;
+                        background-color: #FF0A54;
+                        border: none;
+                        border-radius: 40px;
+                        color: white;
+
+                        span {
+                            font-weight: bold;
+                        }
                     }
                 }
             }
