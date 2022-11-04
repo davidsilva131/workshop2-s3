@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import "../payment/payment.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,7 +17,14 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
 
+  const validateCart = () => {
+    if (JSON.stringify(shop) == '{}') {
+      navigate('/home')
+    }
+  }
+
   const onSubmit = async (data) => {
+    validateCart()
     let temp = {
       userName: data.name,
       userAddress: data.direccion,

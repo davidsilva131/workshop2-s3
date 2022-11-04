@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../payment/procesado.scss'
 import { useNavigate } from "react-router-dom";
+import { ShopContext } from "../../routes/Router";
 
 const Procesado = () => {
+  const { shop } = useContext(ShopContext);
   const navigate = useNavigate()
+
+  const validateCart = () => {
+    if (JSON.stringify(shop) == '{}') {
+      navigate('/home')
+    }
+  }
+
+  useEffect(() => {
+    validateCart()
+  }, [])
+  
+
     const home = () => {
         navigate("/home");
       }; 
